@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Turbo Weather</string>
+    <string name="turbo">Turbo</string>
+    <string name="lines">---------</string>
+    <string name="weather">Weather</string>
+    <string name="poisk">Поиск по городу</string>
 </resources>
