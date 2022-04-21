@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/vkrya/AndroidStudioProjects/TurboWeather/app/src/main/res/drawable/background_grey.xml" value="0.158" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/Turbo-Weather/app/src/main/res/layout/activity_city_finder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/Turbo-Weather/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/Turbo-Weather/app/src/main/res/layout/activity_settings_window.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asus/Desktop/SuperProject/Turbo-Weather/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
+        <entry key="..\:/Users/asus/Desktop/SuperProject/Turbo-Weather/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
+        <entry key="..\:/Users/asus/Desktop/SuperProject/Turbo-Weather/app/src/main/res/layout/activity_city_finder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/asus/Desktop/SuperProject/Turbo-Weather/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/asus/Desktop/SuperProject/Turbo-Weather/app/src/main/res/layout/activity_settings_window.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vkrya/AndroidStudioProjects/TurboWeather/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/vkrya/AndroidStudioProjects/TurboWeather/app/src/main/res/layout/activity_settings_window.xml" value="0.15648148148148147" />
       </map>
     </option>
   </component>
