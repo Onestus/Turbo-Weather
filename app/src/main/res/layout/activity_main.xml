@@ -15,6 +15,68 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"/>
+        android:layout_marginEnd="0dp"
+        app:srcCompat="@drawable/background_light" />
+
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="391dp"
+        android:layout_height="258dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherIcon">
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:text="Turbo"
+            android:textColor="#f3f3f3"
+            android:textSize="50sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/weatherCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="30sp"
+            android:text="---------"
+            android:textColor="#F3F7F0"
+            android:textSize="30sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="384dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="30sp"
+            android:text="Weather"
+            android:textColor="#F3F7F0"
+            android:textSize="40sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
