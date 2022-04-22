@@ -2,6 +2,7 @@ package com.example.turboweather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.widget.TextView;
  *{@link String mweatherIcon} - иконка состояния погоды.
  * <p>
  *{@link String Background} - цвет фона.
+ * @see cityFinder
  *
  */
 public class MainActivity extends AppCompatActivity {
@@ -50,9 +52,19 @@ public class MainActivity extends AppCompatActivity {
 
     LocationManager mLocationManager;
     LocationListener mLocationListner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Intent Location
+
+        weatherState = findViewById(R.id.weatherCondition);
+        Temperature = findViewById(R.id.temperature);
+        mweatherIcon = findViewById(R.id.weatherIcon);
+        mCityFinder = findViewById(R.id.cityFinder);
+        NameofCity = findViewById(R.id.cityName);
+        Background = findViewById(R.id.background);
     }
 }
