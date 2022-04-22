@@ -28,7 +28,6 @@ import android.widget.TextView;
  *{@link String mweatherIcon} - иконка состояния погоды.
  * <p>
  *{@link String Background} - цвет фона.
- * @see cityFinder
  *
  */
 public class MainActivity extends AppCompatActivity {
