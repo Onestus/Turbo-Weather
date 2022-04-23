@@ -1,5 +1,6 @@
 package com.example.turboweather;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Здесь просиходит вся магия.
@@ -116,5 +118,26 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         // Intent Location
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        if(requestCode==REQUEST_CODE)
+        {
+            if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(MainActivity.this,"Местоположение получено",Toast.LENGTH_SHORT).show();
+                getWeatherForCurrentLocation();
+            }
+            else
+            {
+                //user denied the permission
+            }
+        }
+
+
     }
 }
