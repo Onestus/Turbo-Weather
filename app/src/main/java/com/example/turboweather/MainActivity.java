@@ -17,6 +17,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+
 /**
  * Здесь просиходит вся магия.
  * <p>
@@ -85,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 String Latitude = String.valueOf(location.getLatitude());
                 String Longitude = String.valueOf(location.getLongitude());
 
-                // Intent Location
+                RequestParams params = new RequestParams();
+                params.put("lat" ,Latitude);
+                params.put("lon",Longitude);
+                params.put("appid",APP_ID);
+                letsdoSomeNetworking(params);
 
             }
 
@@ -137,6 +149,33 @@ public class MainActivity extends AppCompatActivity {
                 //user denied the permission
             }
         }
+
+
+    }
+
+    private  void letsdoSomeNetworking(RequestParams params)
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(WEATHER_URL,params,new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                Toast.makeText(MainActivity.this,"Успешно",Toast.LENGTH_SHORT).show();
+
+                // JSON received request here
+
+
+                // super.onSuccess(statusCode, headers, response);
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Toast.makeText(MainActivity.this,"Город введен неправильно",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }
