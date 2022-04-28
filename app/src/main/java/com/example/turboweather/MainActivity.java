@@ -37,7 +37,7 @@ import cz.msebera.android.httpclient.Header;
  *{@link String APP_ID} - ID приложение по которому сайт openweathermap.org передает состояние погоды.
  * <p>
  *{@link String WEATHER_URL} - URL сайта openweathermap.org, который передает состояние погоды.
- <p>
+ *<p>
  *{@link String Location_Provider} - переменная, получающая местоположение пользователя.
  * <p>
  *{@link String NameofCity, weatherState, Temperature} - название города, состояние погоды и температура соответственно.
@@ -113,18 +113,24 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      *
-     *
-     * @param  city  название города введенное пользователем
+     * Метод для получения погоды в городе, введенным пользователем, собирающий и
+     * отправляющий объект {@link Object params} в метод {@link Void letsdoSomeNetworking}
+     * <p>
+     * {@link String APP_ID} - ID приложение по которому сайт openweathermap.org передает состояние погоды.
+     * <p>
+     * @param  city  название города, введенное пользователем
      */
-    public  void getWeatherForNewCity(String city)
+    public void getWeatherForNewCity(String city)
     {
-        RequestParams params=new RequestParams();
-        params.put("q",city);
-        params.put("appid",APP_ID);
+        RequestParams params = new RequestParams();
+        params.put("q", city);
+        params.put("appid", APP_ID);
         letsdoSomeNetworking(params);
-
     }
 
+    /**
+     * Метод, получающий
+     */
     private void getWeatherForCurrentLocation() {
 
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -207,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
     ⣿⡏⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣤⣤⣶⣿⣿⣜⠿⣿⣿
     ⣿⢣⣿⣿⣿⣿⣿⣿⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡝⣿
      */
-    private  void letsdoSomeNetworking(RequestParams params)
+    private void letsdoSomeNetworking(RequestParams params)
     {
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(WEATHER_URL,params,new JsonHttpResponseHandler()
