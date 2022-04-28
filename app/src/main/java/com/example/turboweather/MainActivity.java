@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Метод для получения информации о разрещении отслеживания геолокации пользователя
+     * Метод для получения информации о разрешении отслеживания геолокации пользователя
      * <p>
      * @param requestCode Помогает идентифицировать, с какого Intent получен код и различать его от остальных
      * @param permissions Позволяет получить список прав приложения
@@ -222,17 +222,30 @@ public class MainActivity extends AppCompatActivity {
     ⣿⡏⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣤⣤⣶⣿⣿⣜⠿⣿⣿
     ⣿⢣⣿⣿⣿⣿⣿⣿⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡝⣿
      */
+
+    /**
+     * Метод, обращающийся с HTTP запросом на сервер и получающий в результате JSON список
+     * <p>
+     * {@link String AsyncHttpClient} может быть использован для создания асинхронных GET, POST, PUT
+     * и DELETE HTTP запросов в Android приложениях.
+     * <p>
+     * {@link String JsonHttpResponseHandler} Используется для перехвата и обработки ответов
+     * на запросы, сделанные с помощью AsyncHttpClient, с автоматическим анализом в JSONObject
+     * или JSONArray.
+     * <p>
+     * @param params Параметры HTTP запроса
+     */
     private void letsdoSomeNetworking(RequestParams params)
     {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(WEATHER_URL,params,new JsonHttpResponseHandler()
+        client.get(WEATHER_URL, params, new JsonHttpResponseHandler()
         {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
                 Toast.makeText(MainActivity.this,"Успешно",Toast.LENGTH_SHORT).show();
 
-                weatherData weatherD=weatherData.fromJson(response);
+                weatherData weatherD = weatherData.fromJson(response);
                 updateUI(weatherD);
 
 
@@ -250,19 +263,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  void updateUI(weatherData weather){
+    /**
+     * Метод для отображения данных о погоде в городе(Город, Температура, Влажность, Давление и т.д.)
+     * @param weather Массив данных JSON, полученный из HTTP запроса
+     */
+    public  void updateUI(@NonNull weatherData weather){
 
 
         Temperature.setText(weather.getmTemperature());
         NameofCity.setText(weather.getMcity());
-        Humidity.setText("Влажность: " +weather.getmHumidity() +"%");
+        Humidity.setText("Влажность: " + weather.getmHumidity() + "%");
         weatherState.setText(weather.getmWeatherType());
         feelslike.setText("Ощущается как: " + weather.getmFeelsLike());
         int resourceID=getResources().getIdentifier(weather.getMicon(),"drawable",getPackageName());
         int backgroundID=getResources().getIdentifier(weather.getMback(),"drawable",getPackageName());
         mweatherIcon.setImageResource(resourceID);
         Background.setImageResource(backgroundID);
-        pressure.setText("Давление: "+weather.getmPressure() +" мм рт. ст.");
+        pressure.setText("Давление: " + weather.getmPressure() + " мм рт. ст.");
 
     }
 
