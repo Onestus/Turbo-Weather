@@ -163,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this,"Успешно",Toast.LENGTH_SHORT).show();
 
-                // JSON received request here
+                weatherData weatherD=weatherData.fromJson(response);
+                updateUI(weatherD);
 
 
                 // super.onSuccess(statusCode, headers, response);
@@ -178,5 +179,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public  void updateUI(weatherData weather){
+
+
+        Temperature.setText(weather.getmTemperature());
+        NameofCity.setText(weather.getMcity());
+        weatherState.setText(weather.getmWeatherType());
+        int resourceID=getResources().getIdentifier(weather.getMicon(),"drawable",getPackageName());
+        int backgroundID=getResources().getIdentifier(weather.getMback(),"drawable",getPackageName());
+        mweatherIcon.setImageResource(resourceID);
+        Background.setImageResource(backgroundID);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(mLocationManager!=null)
+        {
+            mLocationManager.removeUpdates(mLocationListner);
+        }
     }
 }
