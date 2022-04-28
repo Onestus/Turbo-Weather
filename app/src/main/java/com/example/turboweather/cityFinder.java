@@ -12,9 +12,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+/**
+ * Класс активити cityFinder
+ * <p>
+ * Данный класс обрабатывает
+ */
 public class cityFinder extends AppCompatActivity {
-
+    /**
+     *
+     * @param savedInstanceState параметр для сохранения состояния, связанного с текущим экземпляром Activity, например текущей информации о навигации или выборе, так что, если Android уничтожает и воссоздает Activity, он может вернуться, как было раньше.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +51,18 @@ public class cityFinder extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Метод вызывающий метод показывания окна правил ввода города {@link String showWindow}.
+     * @param view Вид, на который был сделан клик.
+     */
     public void OnClickSettings(View view) {
         showWindow();
     }
 
-
+    /**
+     * Метод показывающий окно правил ввода города.
+     * <p>
+     */
     public void showWindow() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Правила ввода города");

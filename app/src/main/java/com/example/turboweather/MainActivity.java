@@ -68,7 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     LocationManager mLocationManager;
     LocationListener mLocationListner;
-
+    /**
+     * При создании активити, приложение показывает состояние погоды в городе.
+     * <p>
+     * Если пользователь только зашел в приложение, вызывается метод {@link String getWeatherForCurrentLocation()}
+     * <p>
+     * Если пользователь перешел на данное активити из активити {@link cityFinder}, вызывается метод getWeatherForNewCity("Введеный пользователем город")
+     * @param savedInstanceState параметр для сохранения состояния, связанного с текущим экземпляром Activity, например текущей информации о навигации или выборе, так что, если Android уничтожает и воссоздает Activity, он может вернуться, как было раньше.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     *
+     * @param  city  название города введенное пользователем
+     */
     public  void getWeatherForNewCity(String city)
     {
         RequestParams params=new RequestParams();
@@ -181,7 +193,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    /*
+    _______Cmon do some Networking________
+    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿
+    ⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⢀⣠⡤⠤⢭⣛⡉⢀⡤⠴⠶⠶⡶⢆⣉⠙⠻⢿⣿⣿
+    ⣿⣿⣿⣿⣿⡿⠋⠀⠠⠞⠉⢀⣀⡤⣤⣤⣭⠭⣤⡤⣽⣿⢿⠿⠛⠛⠳⣌⢻⣿
+    ⣿⣿⣿⣿⢿⡅⠀⠀⠀⠀⣶⠿⠛⠉⣡⠤⠭⠭⠷⡔⠚⠛⠉⠉⠉⢛⢛⢏⣿⣿
+    ⣿⣿⣿⠃⠘⠇⠀⠀⠀⠀⠈⣿⠉⠁⢒⣒⣶⠶⡦⠒⠒⠒⠚⠓⠛⠉⡿⣿⣿⣿
+    ⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⣟⠀⢉⣉⣠⣤⣤⢶⣒⣠⣭⣭⣭⣭⣉⡗⣼⣿⣿
+    ⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠀⠛⠿⠭⠶⠖⠛⠉⠀⠈⠁⠈⠉⠛⢣⣿⣿⣿
+    ⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿
+    ⣿⡏⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣤⣤⣶⣿⣿⣜⠿⣿⣿
+    ⣿⢣⣿⣿⣿⣿⣿⣿⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡝⣿
+     */
     private  void letsdoSomeNetworking(RequestParams params)
     {
         AsyncHttpClient client = new AsyncHttpClient();
