@@ -27,6 +27,7 @@ public class weatherData {
             weatherD.mWeatherType = jsonObject.getJSONArray("weather").getJSONObject(0).getString("main");
             weatherD.micon = updateWeatherIcon(weatherD.mCondition);
             weatherD.mBack = updateBackground(weatherD.mCondition);
+            weatherD.mWeatherType=transtaleType(weatherD.mWeatherType);
             double tempResult = jsonObject.getJSONObject("main").getDouble("temp") - 273.15;
             int roundedValue = (int) Math.rint(tempResult);
             weatherD.mTemperature = Integer.toString(roundedValue);
@@ -67,6 +68,52 @@ public class weatherData {
     ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     —————————————————————————————
      */
+
+    /**
+     * Метод переводящий тип погоды с английского на русский язык
+     * @param type название погоды на английском языке
+     * @return
+     */
+    private static String  transtaleType(String type){
+        if(type.equals("Thunderstorm"))
+        {
+            return "Гроза";
+        }
+        if(type.equals("Drizzle"))
+        {
+            return "Моросящий дождь";
+        }
+        if(type.equals("Rain"))
+        {
+            return "Дождь";
+        }
+        if(type.equals("Snow"))
+        {
+            return "Снег";
+        }
+        if(type.equals("Clear"))
+        {
+            return "Ясно";
+        }
+
+        if(type.equals("Clouds"))
+        {
+            return "Облачно";
+        }
+        if(type.equals("Mist"))
+        {
+            return "Туман";
+        }
+        if(type.equals("Fog"))
+        {
+            return "Туман";
+        }
+        
+        return "Sorry :(";
+    }
+
+
+
 
     /**
      * Метод изменяющий иконку на странице MainActivity, в зависимости от состояния погоды
@@ -205,6 +252,9 @@ public class weatherData {
 
         return "Sorry :(";
     }
+
+
+
 
     /**
      * Метод возвращающий значение параметра температуры в градусах Цельсия
