@@ -2,12 +2,22 @@ package com.example.turboweather;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ * Класс получающий информацию о состоянию погоды и изменяющий поля на странице {@link String MainActivity}
+ * @see MainActivity
+ */
 public class weatherData {
 
     private String mTemperature, micon, mcity, mWeatherType, mBack, mFeelsLike, mHumidity,mPressure;
     private int mCondition;
 
+    /**
+     * Метод получающий JSON объект с информацией о состоянии погоды в городе.
+     * <p>
+     * Внутри JSON объекта выбираются нужные параметры и их значения передаются параметрам объекта {@link String weatherD}
+     * @param jsonObject JSON объект с информацией о состоянии погоды в городе
+     * @return {@link String weatherD} - объект с информацией о состоянии погоды в городе
+     */
     public static weatherData fromJson(JSONObject jsonObject) {
 
         try {
@@ -56,6 +66,12 @@ public class weatherData {
     ⠀⠀⠀⡟⡾⣿⢿⢿⢵⣽⣾⣼⣘⢸⢸⣞⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     —————————————————————————————
+     */
+
+    /**
+     * Метод изменяющий иконку на странице MainActivity, в зависимости от состояния погоды
+     * @param condition состояние погоды в числовом значении
+     * @return название состояния погоды по которому подбирается иконка
      */
     private static String updateWeatherIcon(int condition)
     {
@@ -128,6 +144,13 @@ public class weatherData {
     ⠀⠀⠀⠀⠁⠇⠡⠩⡫⢿⣝⡻⡮⣒⢽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     —————————————————————————————
      */
+
+    /**
+     * Метод изменяющий цвет фона страницы MainActivity, в зависимости от состояния погоды
+     * @param condition состояние погоды в числовом значении
+     * @return название состояния погоды по которому подбирается цвет фона
+     *
+     */
     private static String updateBackground(int condition)
     {
         if(condition>=0 && condition<=300)//thunder
@@ -183,34 +206,66 @@ public class weatherData {
         return "Sorry :(";
     }
 
+    /**
+     * Метод возвращающий значение параметра температуры в градусах Цельсия
+     * @return значение параметра температуры в градусах Цельсия
+     */
     public String getmTemperature() {
         return mTemperature+"°C";
     }
 
+    /**
+     * Метод возвращающий значение параметра названия рисунка погоды
+     * @return значение параметра названия рисунка погоды
+     */
     public String getMicon() {
         return micon;
     }
 
+    /**
+     * Метод возвращающий значение параметра названия города
+     * @return значение параметра названия города
+     */
     public String getMcity() {
         return mcity;
     }
 
+    /**
+     * Метод возвращающий значение параметра названия цвета фона
+     * @return значение параметра названия цвета фона
+     */
     public String getMback() {
         return mBack;
     }
 
+    /**
+     * Метод возвращающий значение параметра названия типа погоды
+     * @return значение параметра названия типа погоды
+     */
     public String getmWeatherType() {
         return mWeatherType;
     }
 
+    /**
+     * Метод возвращающий значение параметра температуры по ощущениям в градусах Цельсия
+     * @return значение параметра температуры по ощущениям в градусах Цельсия
+     */
     public String getmFeelsLike() {
         return mFeelsLike+"°C";
     }
 
+    /**
+     * Метод возвращающий значение параметра влажности в числовом значении
+     * @return значение параметра влажности в числовом значении
+     */
     public String getmHumidity() {
         return mHumidity;
     }
 
+    /**
+     *Метод возвращающий значение параметра давления в числовом значении
+     * @return значение параметра давления в числовом значении
+     */
     public String getmPressure() {
         return mPressure;
     }
