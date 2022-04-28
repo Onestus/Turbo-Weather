@@ -15,10 +15,16 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Класс активити cityFinder
  * <p>
- * Данный класс обрабатывает
  */
 public class cityFinder extends AppCompatActivity {
     /**
+     * При создании активити, приложение показывает окно ввода города, кнопку перехода назад и кнопку правил.
+     *  <p>
+     * Если пользователь нажал на кнопку перехода назад, вызывается метод {@link String onClick()}
+     * <p>
+     * Если пользователь нажал на кнопку правил , вызывается метод {@link String onClickSetting()}, которое показывает набор правил ввода города
+     * <p>
+     * Когда пользователь нажимает на окно ввода города, открывается клавиатура и пользователь может ввести название города. После ввода вызывается функция {@link String onEditorAction()}
      *
      * @param savedInstanceState параметр для сохранения состояния, связанного с текущим экземпляром Activity, например текущей информации о навигации или выборе, так что, если Android уничтожает и воссоздает Activity, он может вернуться, как было раньше.
      */
@@ -31,11 +37,18 @@ public class cityFinder extends AppCompatActivity {
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * Метод закрывает активити и переносит пользователя на страницу MainActivity
+             * @see MainActivity
+             */
             public void onClick(View v) {
                 finish();
             }
         });
-
+        /**
+         * Метод получает введеный пользователем текст и создает Intent, запускающий MainActivity, передавая название города в переменной {@link String newCity}
+         * @see MainActivity
+         */
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
