@@ -34,11 +34,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="254dp"
+        android:layout_height="299dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="379dp"
+        android:layout_marginTop="334dp"
         android:layout_marginBottom="98dp"
         android:orientation="vertical">
 
@@ -89,12 +89,25 @@
             android:textStyle="bold">
 
         </TextView>
+
         <TextView
             android:id="@+id/humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="30dp"
             android:text="Влажность: "
+            android:textColor="#f3f3f3"
+            android:textSize="28sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:text="Давление: "
             android:textColor="#f3f3f3"
             android:textSize="28sp"
             android:textStyle="bold">

@@ -26,9 +26,10 @@ public class weatherData {
             int tempResultH = jsonObject.getJSONObject("main").getInt("humidity");
             int roundedValueH = (int) Math.rint(tempResultH);
             weatherD.mHumidity = Integer.toString(roundedValueH);
-            int tempResultP = jsonObject.getJSONObject("main").getInt("humidity");
+            int tempResultP = jsonObject.getJSONObject("main").getInt("pressure");
             int roundedValueP = (int) Math.rint(tempResultP);
-            weatherD.mPressure = Integer.toString(roundedValueP);
+            int MMRtStolb = (int) ((roundedValueP*7.5006)/10);
+            weatherD.mPressure = Integer.toString(MMRtStolb);
 
 
             return weatherD;

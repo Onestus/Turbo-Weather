@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     String Location_Provider = LocationManager.GPS_PROVIDER;
 
-    TextView NameofCity, weatherState, Temperature, feelslike,Humidity;
+    TextView NameofCity, weatherState, Temperature, feelslike,Humidity , pressure;
     ImageView mweatherIcon;
     ImageView Background;
 
@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         Background = findViewById(R.id.background);
         feelslike = findViewById(R.id.feelslike);
         Humidity = findViewById(R.id.humidity);
+        pressure = findViewById(R.id.pressure);
 
         mCityFinder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
         int backgroundID=getResources().getIdentifier(weather.getMback(),"drawable",getPackageName());
         mweatherIcon.setImageResource(resourceID);
         Background.setImageResource(backgroundID);
+        pressure.setText("Давление: "+weather.getmPressure() +" мм рт. ст.");
 
     }
 
