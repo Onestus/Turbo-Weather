@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -73,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Intent Location
+        Intent mIntent=getIntent();
+        String city= mIntent.getStringExtra("City");
+        if(city!=null)
+        {
+            getWeatherForNewCity(city);
+        }
+        else
+        {
+            getWeatherForCurrentLocation();
+        }
 
         weatherState = findViewById(R.id.weatherCondition);
         Temperature = findViewById(R.id.temperature);
@@ -81,6 +91,23 @@ public class MainActivity extends AppCompatActivity {
         mCityFinder = findViewById(R.id.cityFinder);
         NameofCity = findViewById(R.id.cityName);
         Background = findViewById(R.id.background);
+
+        mCityFinder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, cityFinder.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public  void getWeatherForNewCity(String city)
+    {
+        RequestParams params=new RequestParams();
+        params.put("q",city);
+        params.put("appid",APP_ID);
+        letsdoSomeNetworking(params);
+
     }
 
     private void getWeatherForCurrentLocation() {
