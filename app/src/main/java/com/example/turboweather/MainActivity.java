@@ -129,7 +129,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Метод, получающий
+     * Метод для получения погоды в городе по умолчанию(текущий город пользователя)
+     * <p>
+     * {@link String LocationListener} - Для получения данных о текущей геопозиции и ее изменении
      */
     private void getWeatherForCurrentLocation() {
 
@@ -180,6 +182,13 @@ public class MainActivity extends AppCompatActivity {
         mLocationManager.requestLocationUpdates(Location_Provider, MIN_TIME, MIN_DISTANCE, mLocationListner);
     }
 
+    /**
+     * Метод для получения информации о разрещении отслеживания геолокации пользователя
+     * <p>
+     * @param requestCode Помогает идентифицировать, с какого Intent получен код и различать его от остальных
+     * @param permissions Позволяет получить список прав приложения
+     * @param grantResults Полученный результат от пользователя
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
