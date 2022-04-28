@@ -71,10 +71,10 @@ public class weatherData {
 
     /**
      * Метод переводящий тип погоды с английского на русский язык
-     * @param type название погоды на английском языке
-     * @return
+     * @param type название типа погоды на английском языке
+     * @return название типа погоды на русском языке
      */
-    private static String  transtaleType(String type){
+    public static String  transtaleType(String type){
         if(type.equals("Thunderstorm"))
         {
             return "Гроза";
@@ -108,7 +108,7 @@ public class weatherData {
         {
             return "Туман";
         }
-        
+
         return "Sorry :(";
     }
 
@@ -120,7 +120,7 @@ public class weatherData {
      * @param condition состояние погоды в числовом значении
      * @return название состояния погоды по которому подбирается иконка
      */
-    private static String updateWeatherIcon(int condition)
+    public static String updateWeatherIcon(int condition)
     {
         if(condition>=0 && condition<=300)
         {
@@ -198,7 +198,7 @@ public class weatherData {
      * @return название состояния погоды по которому подбирается цвет фона
      *
      */
-    private static String updateBackground(int condition)
+    public static String updateBackground(int condition)
     {
         if(condition>=0 && condition<=300)//thunder
         {
