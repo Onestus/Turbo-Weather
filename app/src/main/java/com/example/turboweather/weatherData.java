@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class weatherData {
 
-    private String mTemperature, micon, mcity, mWeatherType, mBack;
+    private String mTemperature, micon, mcity, mWeatherType, mBack, mFeelsLike, mHumidity;
     private int mCondition;
 
     public static weatherData fromJson(JSONObject jsonObject) {
@@ -20,6 +20,14 @@ public class weatherData {
             double tempResult = jsonObject.getJSONObject("main").getDouble("temp") - 273.15;
             int roundedValue = (int) Math.rint(tempResult);
             weatherD.mTemperature = Integer.toString(roundedValue);
+            double tempResultFL = jsonObject.getJSONObject("main").getDouble("feels_like") - 273.15;
+            int roundedValueFL = (int) Math.rint(tempResultFL);
+            weatherD.mFeelsLike = Integer.toString(roundedValueFL);
+            int tempResultH = jsonObject.getJSONObject("main").getInt("humidity");
+            int roundedValueH = (int) Math.rint(tempResultH);
+            weatherD.mHumidity = Integer.toString(roundedValueH);
+
+
             return weatherD;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -35,11 +43,11 @@ public class weatherData {
         {
             return "thunderstrom1";
         }
-        else if(condition>=300 && condition<=500)
+        else if(condition>=300 && condition<500)
         {
             return "lightrain";
         }
-        else if(condition>=500 && condition<=600)
+        else if(condition>=500 && condition<600)
         {
             return "shower";
         }
@@ -66,7 +74,7 @@ public class weatherData {
         }
         else  if(condition>=900 && condition<=902)
         {
-            return "thunderstrom1";
+            return "thunderstrom";
         }
         if(condition==903)
         {
@@ -78,7 +86,7 @@ public class weatherData {
         }
         if(condition>=905 && condition<=1000)
         {
-            return "thunderstrom1";
+            return "thunderstrom";
         }
 
         return "Sorry :(";
@@ -90,11 +98,11 @@ public class weatherData {
         {
             return "background_dark";
         }
-        else if(condition>=300 && condition<=500)//lightrain
+        else if(condition>=300 && condition<500)//lightrain
         {
             return "background_darkgrey";
         }
-        else if(condition>=500 && condition<=600)//rain
+        else if(condition>=500 && condition<600)//rain
         {
             return "background_darkdarkgrey";
         }
@@ -159,4 +167,11 @@ public class weatherData {
         return mWeatherType;
     }
 
+    public String getmFeelsLike() {
+        return mFeelsLike+"°C";
+    }
+
+    public String getmHumidity() {
+        return mHumidity;
+    }
 }

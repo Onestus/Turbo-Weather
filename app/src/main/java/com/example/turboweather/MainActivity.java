@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     String Location_Provider = LocationManager.GPS_PROVIDER;
 
-    TextView NameofCity, weatherState, Temperature;
+    TextView NameofCity, weatherState, Temperature, feelslike,Humidity;
     ImageView mweatherIcon;
     ImageView Background;
 
@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         mCityFinder = findViewById(R.id.cityFinder);
         NameofCity = findViewById(R.id.cityName);
         Background = findViewById(R.id.background);
+        feelslike = findViewById(R.id.feelslike);
+        Humidity = findViewById(R.id.humidity);
 
         mCityFinder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
             return;
         }
-        // Intent Location
+        mLocationManager.requestLocationUpdates(Location_Provider, MIN_TIME, MIN_DISTANCE, mLocationListner);
     }
 
     @Override
@@ -213,7 +215,9 @@ public class MainActivity extends AppCompatActivity {
 
         Temperature.setText(weather.getmTemperature());
         NameofCity.setText(weather.getMcity());
+        Humidity.setText("Влажность: " +weather.getmHumidity() +"%");
         weatherState.setText(weather.getmWeatherType());
+        feelslike.setText("Ощущается как: " + weather.getmFeelsLike());
         int resourceID=getResources().getIdentifier(weather.getMicon(),"drawable",getPackageName());
         int backgroundID=getResources().getIdentifier(weather.getMback(),"drawable",getPackageName());
         mweatherIcon.setImageResource(resourceID);
